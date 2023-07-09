@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { TaskContext } from "../context/TaskContext";
+import { Button } from "@mui/material";
 
 function TaskForm() {
   const [title, setTitle] = useState("");
@@ -33,7 +34,7 @@ function TaskForm() {
         onChange={(e) => setDescription(e.target.value)}
         value={description}
       ></textarea>
-      <button>Save</button>
+      <Button color="primary" variant="contained" type="submit">Save</Button>
     </form>
   );
 }
