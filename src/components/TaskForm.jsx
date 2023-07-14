@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { TaskContext } from "../context/TaskContext";
-import { Button } from "@mui/material";
+import { Box, Button, FormControl, Paper, TextField, TextareaAutosize } from "@mui/material";
 
 function TaskForm() {
   const [title, setTitle] = useState("");
@@ -20,22 +20,31 @@ function TaskForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        id="title_field"
-        placeholder="Write your task"
-        onChange={(e) => setTitle(e.target.value)}
-        value={title}
-        autoFocus
-      />
-      <textarea
-        cols="30"
-        rows="10"
-        onChange={(e) => setDescription(e.target.value)}
-        value={description}
-      ></textarea>
-      <Button color="primary" variant="contained" type="submit">Save</Button>
-    </form>
+    <Paper sx={{ m: 5, pt: 5, pb: 5, maxWidth: 500,  minWidth: 275}}>
+      <Box component="form" onSubmit={handleSubmit}>
+        <FormControl>
+          <TextField 
+            required
+            sx={{pb:2}}
+            id="title_field"
+            label="Write your task"
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
+            autoFocus
+          />  
+          <TextareaAutosize
+            minRows={8}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Add the description"
+            value={description}
+          />
+
+          <Button color="primary" variant="contained" type="submit">
+            Save
+          </Button>
+        </FormControl>
+      </Box>
+    </Paper>
   );
 }
 
